@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aether Score — Masterclass Composer</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Aether Score</h1>
+    <p class="sub">A code-born orchestra. Inception-level cathartic form, now with Deep Music: just intonation, nested dream-clocks, silence-before-impact, fractal cells, groove ghosts, and a generated hall. No samples. No libraries.</p>
+    <span class="badge">3,600 theory skills · 3,060 deep-music skills · 12-TET or just</span>
+  </header>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <label>Musical style</label>
+        <select id="mood">
+          <optgroup label="Cathartic / Zimmer architecture">
+            <option value="catharsis" selected>Φ Catharsis — Inception architecture</option>
+            <option value="zInception">🎬 Dream Heist</option>
+            <option value="zTime">⏳ Building Time</option>
+            <option value="zInterstellar">🪐 Docking</option>
+            <option value="zPirates">🏴 Adventure</option>
+            <option value="zGladiator">🛡️ Arena</option>
+            <option value="zDarkKnight">🦇 Two-Note</option>
+            <option value="zDunkirk">⏱️ Tension</option>
+            <option value="epicTrailer">💥 Epic Trailer</option>
+            <option value="orchestral">🎻 Orchestral</option>
+          </optgroup>
+          <optgroup label="World styles">
+            <option value="synthwave">🌅 Synthwave</option>
+            <option value="house">🪩 House / EDM</option>
+            <option value="pop">🎤 Pop</option>
+            <option value="trap">🔥 Trap</option>
+            <option value="dnb">⚡ Drum &amp; Bass</option>
+            <option value="lofi">📻 Lo-fi</option>
+            <option value="jazz">🎷 Jazz</option>
+            <option value="rock">🎸 Rock</option>
+            <option value="cyberpunk">🌃 Cyberpunk</option>
+            <option value="ambient">🌫️ Ambient</option>
+            <option value="reggaeton">🔥 Reggaeton</option>
+            <option value="afrobeat">🥁 Afrobeat</option>
+            <option value="rnb">💜 R&amp;B</option>
+            <option value="folk">🌿 Folk / Medieval</option>
+            <option value="blues">🎸 Blues</option>
+          </optgroup>
+          <optgroup label="Moods">
+            <option value="happy">☀️ Happy</option>
+            <option value="dreamy">🌙 Dreamy</option>
+            <option value="melancholy">🌧️ Melancholy</option>
+            <option value="chill">🌊 Chill</option>
+            <option value="spooky">🦇 Spooky</option>
+            <option value="random">🎲 Surprise</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <label>Seed <span class="val">(same seed = same score)</span></label>
+        <div class="seedrow">
+          <input type="text" id="seed" value="arena-42">
+          <button class="ghost" id="diceBtn" title="New seed">🎲</button>
+        </div>
+      </div>
+      <div>
+        <label>Tempo — <span class="val" id="tempoVal">66 BPM</span></label>
+        <input type="range" id="tempo" min="40" max="200" value="66">
+      </div>
+      <div>
+        <label>Length — <span class="val" id="barsVal">24 bars</span></label>
+        <input type="range" id="bars" min="8" max="32" step="4" value="24">
+      </div>
+      <div>
+        <label>Melody density — <span class="val" id="densVal">40%</span></label>
+        <input type="range" id="density" min="8" max="100" value="40">
+      </div>
+      <div>
+        <label>Weirdness — <span class="val" id="weirdVal">10%</span></label>
+        <input type="range" id="weird" min="0" max="100" value="10">
+      </div>
+      <div>
+        <label>Intensity — <span class="val" id="intVal">78%</span></label>
+        <input type="range" id="intensity" min="15" max="100" value="78">
+      </div>
+      <div>
+        <label>Lead instrument</label>
+        <select id="timbre">
+          <option value="auto" selected>✨ Auto (style default)</option>
+          <option value="piano">🎹 Concert piano</option>
+          <option value="strings">🎻 Strings</option>
+          <option value="cello">🎻 Cello</option>
+          <option value="brass">🎺 Brass</option>
+          <option value="horn">📯 Horn</option>
+          <option value="organ">🎹 Pipe organ</option>
+          <option value="choir">👥 Choir</option>
+          <option value="pad">🌌 Pad</option>
+          <option value="synth">🎛️ Synth</option>
+          <option value="pluck">🪕 Pluck</option>
+          <option value="harp">🎐 Harp</option>
+          <option value="guitar">🎸 Guitar</option>
+          <option value="flute">🪈 Flute</option>
+          <option value="bell">🔔 Bell</option>
+          <option value="square">👾 Square</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <label>Ensemble layers</label>
+      <div class="checks">
+        <label class="check"><input type="checkbox" id="drums" checked> Rhythm</label>
+        <label class="check"><input type="checkbox" id="ostinato" checked> Ostinato / clocks</label>
+        <label class="check"><input type="checkbox" id="padsOn" checked> Pads &amp; strings</label>
+        <label class="check"><input type="checkbox" id="brassOn" checked> Brass / BRAAAM</label>
+        <label class="check"><input type="checkbox" id="bassOn" checked> Bass</label>
+        <label class="check"><input type="checkbox" id="loop"> Loop</label>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <label>Deep Music desks</label>
+      <div class="checks">
+        <label class="check"><input type="checkbox" id="deepJi" checked> Just intonation</label>
+        <label class="check"><input type="checkbox" id="deepNested" checked> Nested dream-clocks</label>
+        <label class="check"><input type="checkbox" id="deepSilence" checked> Silence before impact</label>
+        <label class="check"><input type="checkbox" id="deepFractal" checked> Fractal cell</label>
+        <label class="check"><input type="checkbox" id="deepGroove" checked> Groove ghosts</label>
+        <label class="check"><input type="checkbox" id="deepTexture" checked> Living air</label>
+      </div>
+    </div>
+    <div class="btnrow">
+      <button class="primary" id="playBtn">▶ Compose &amp; Play</button>
+      <button class="ghost" id="stopBtn" disabled>⏹ Stop</button>
+      <button class="ghost" id="newBtn">✨ New score</button>
+      <button class="ghost" id="midiBtn">⬇ MIDI</button>
+      <button class="ghost" id="jsonBtn">⬇ Recipe</button>
+    </div>
+    <p class="hint">Catharsis locks an 8-bar harmonic capsule and only changes orchestration — the wave that made “Time” land. Material is original. Raise length to 24–32 bars.</p>
+  </div>
+
+  <div class="card">
+    <div class="now">
+      <span class="title" id="songTitle">— press play —</span>
+      <span class="meta" id="songMeta"></span>
+      <span class="chip" id="keyChip" style="display:none"></span>
+      <span class="chip dim" id="styleChip" style="display:none"></span>
+      <span class="chip" id="gradeChip" style="display:none"></span>
+    </div>
+    <canvas class="roll" id="roll" width="1080" height="280"></canvas>
+    <div class="legend">
+      <span><span class="dot" style="background:#ffd479"></span>Piano cell</span>
+      <span><span class="dot" style="background:#c48bff"></span>Cello</span>
+      <span><span class="dot" style="background:#7f7fd0"></span>SATB</span>
+      <span><span class="dot" style="background:#4db38a"></span>Bass</span>
+      <span><span class="dot" style="background:#c9a46a"></span>Ostinato</span>
+      <span><span class="dot" style="background:#6ec8ff"></span>Pads</span>
+      <span><span class="dot" style="background:#e07a3d"></span>Brass</span>
+      <span><span class="dot" style="background:#d06a8a"></span>Drums</span>
+    </div>
+    <div class="prog" id="prog"></div>
+  </div>
+
+  <div class="card two">
+    <div class="critic">
+      <label>Masterclass critic</label>
+      <div class="score" id="critScore">—</div>
+      <p id="critGrade"></p>
+      <ul id="critIssues"></ul>
+      <p class="math" id="mathBox"></p>
+    </div>
+    <div>
+      <label>Tension curve · golden cut</label>
+      <canvas class="spark" id="spark" width="420" height="72"></canvas>
+      <p class="hint" style="margin-top:8px">Gold line = φ climax. Intensity is a logistic that collapses after the cut — calculus, not a fader.</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>How this is written (recipe + skills)</summary>
+    <p style="margin-top:8px">
+      <code>Music-Instrumental-Composer</code> (3,921 files / 3,600 skills) and <code>Deep-Music</code> (3,333 files / 3,060 skills) cloned via git, not the HTML page.
+      Both corpora are templated (Mission → Validation Gate). The course maps are what the engine runs: species counterpoint, SATB, tension, harmonic series, plus groove, Ma/silence, nested clocks, just ratios, fractal self-similarity, convolution space, living texture.<br><br>
+      Inception architecture (not a transcription of “Time”): dual-tonic capsule, additive cycles, first-species piano, nested dream-clocks, silence before the brass, collapse to the cell.
+      Formulae: 12-TET <code>f = 440·2^((m−69)/12)</code> or just <code>f = f₀·ratio·2^oct</code> with 3/2 fifths; piano <code>f_n = n f0 √(1+B n²)</code>; logistic form; exponential IR hall.
+    </p>
+  </details>
+  <footer>Made of math, not samples. Seed “arena-42” reprints the same score.</footer>
+</div>
+<script src="js/math.js"></script>
+<script src="js/theory.js"></script>
+<script src="js/deep.js"></script>
+<script src="js/compose.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/skills-digest.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
